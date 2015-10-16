@@ -594,13 +594,13 @@
         animateObj = {};
         animateObj[slider.animProp] = value;
         if (type === 'slide') {
-          el.animate(animateObj, duration, slider.settings.easing, function() {
+          el.velocity(animateObj, duration, slider.settings.easing, function() {
             updateAfterSlideTransition();
           });
         } else if (type === 'reset') {
           el.css(slider.animProp, value);
         } else if (type === 'ticker') {
-          el.animate(animateObj, duration, 'linear', function() {
+          el.velocity(animateObj, duration, 'linear', function() {
             setPositionProperty(params.resetValue, 'reset', 0);
             // run the recursive loop after animation
             tickerLoop();
@@ -1224,7 +1224,7 @@
             }
             el.stopAuto();
           } else {
-            // el.animate(property, 200);
+            // el.velocity(property, 200);
             setPositionProperty(value, 'reset', 200);
           }
         }
@@ -1372,7 +1372,7 @@
       if (slider.settings.mode === 'fade') {
         // if adaptiveHeight is true and next height is different from current height, animate to the new height
         if (slider.settings.adaptiveHeight && slider.viewport.height() !== getViewportHeight()) {
-          slider.viewport.animate({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
+          slider.viewport.velocity({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
         }
         // fade out the visible child and reset its z-index value
         slider.children.filter(':visible').fadeOut(slider.settings.speed).css({zIndex: 0});
@@ -1385,7 +1385,7 @@
       } else {
         // if adaptiveHeight is true and next height is different from current height, animate to the new height
         if (slider.settings.adaptiveHeight && slider.viewport.height() !== getViewportHeight()) {
-          slider.viewport.animate({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
+          slider.viewport.velocity({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
         }
         // if carousel and not infinite loop
         if (!slider.settings.infiniteLoop && slider.carousel && slider.active.last) {

@@ -1,4 +1,4 @@
-#bxSlider 4.2.5
+#bxSlider 4.2.5_1
 ##The fully-loaded, responsive jQuery content slider
 
 ###Why should I use this slider?
@@ -457,7 +457,7 @@ Adds Aria Live attribute to slider.
 default: true
 options: boolean (true / false)
 ```
-    
+
 **ariaHidden**
 Adds Aria Hidden attribute to any nonvisible slides.
 ```
@@ -618,7 +618,7 @@ slider.destroySlider();
 From the command line:
 
 1. Install `grunt-cli` and `bower` globally with `npm install -g grunt-cli bower`.
-2. Run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies. 
+2. Run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies.
 3. Run `bower install`, which installs front-end packages defined in `bower.json`.
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
@@ -642,13 +642,16 @@ Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this proje
 
 ## Changelog
 
+### Version 4.2.5_1
+* Jquery animate is replaced with velocity.js
+
 ### Version 4.2.5
 * Fix: Vertical carousel minSlides not working #840
 * Fix: slider breaks with css animations if settings.speed set to 0 #838
 * Fix: Slider runs into undefined state when reloadSlider is called before initialization was finished #833
 
 ### Version 4.2.4
-NOTICE: We have switched to a Grunt based build process in order to leverage [Assemble](http://assemble.io) for local documentation building. Please review the above notes about Grunt for the commands available. 
+NOTICE: We have switched to a Grunt based build process in order to leverage [Assemble](http://assemble.io) for local documentation building. Please review the above notes about Grunt for the commands available.
 
 * Fix: Fixed transition from first to last slide during infinite loop #778
 * Fix: Reload on multiple sliders doesn't work? #755
@@ -661,7 +664,7 @@ NOTICE: We have switched to a Grunt based build process in order to leverage [As
 * Enhancement: Slider getter through jquery object #739
 * Enhancement: Add aria attributes #751
 * Enhancement: Slider element in every callback and a new method getSliderElement (#780)
-* Enhancement: Local Documentiation and examples. I have added buildable documentation to the repo. This will expand over time and allow for community corrections as needed. Please see above Grunt notes on how to build. 
+* Enhancement: Local Documentiation and examples. I have added buildable documentation to the repo. This will expand over time and allow for community corrections as needed. Please see above Grunt notes on how to build.
 
 
 ### Version 4.2.3
