@@ -594,13 +594,13 @@
         animateObj = {};
         animateObj[slider.animProp] = value;
         if (type === 'slide') {
-          el.velocity(animateObj, duration, slider.settings.easing, function() {
+          el.velocity('stop').velocity(animateObj, duration, slider.settings.easing, function() {
             updateAfterSlideTransition();
           });
         } else if (type === 'reset') {
           el.css(slider.animProp, value);
         } else if (type === 'ticker') {
-          el.velocity(animateObj, duration, 'linear', function() {
+          el.velocity('stop').velocity(animateObj, duration, 'linear', function() {
             setPositionProperty(params.resetValue, 'reset', 0);
             // run the recursive loop after animation
             tickerLoop();
@@ -1224,7 +1224,7 @@
             }
             el.stopAuto();
           } else {
-            // el.velocity(property, 200);
+            // el.velocity('stop').velocity(property, 200);
             setPositionProperty(value, 'reset', 200);
           }
         }
@@ -1375,12 +1375,12 @@
       if (slider.settings.mode === 'fade') {
         // if adaptiveHeight is true and next height is different from current height, animate to the new height
         if (slider.settings.adaptiveHeight && slider.viewport.height() !== getViewportHeight()) {
-          slider.viewport.velocity({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
+          slider.viewport.velocity('stop').velocity({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
         }
         // fade out the visible child and reset its z-index value
-        slider.children.filter(':visible').fadeOut(slider.settings.speed).css({zIndex: 0});
+        slider.children.filter(':visible').velocity('stop').velocity('fadeOut', slider.settings.speed).css({zIndex: 0});
         // fade in the newly requested slide
-        slider.children.eq(slider.active.index).css('zIndex', slider.settings.slideZIndex + 1).fadeIn(slider.settings.speed, function() {
+        slider.children.eq(slider.active.index).css('zIndex', slider.settings.slideZIndex + 1).velocity('stop').velocity('fadeIn', slider.settings.speed, function() {
           $(this).css('zIndex', slider.settings.slideZIndex);
           updateAfterSlideTransition();
         });
@@ -1388,7 +1388,7 @@
       } else {
         // if adaptiveHeight is true and next height is different from current height, animate to the new height
         if (slider.settings.adaptiveHeight && slider.viewport.height() !== getViewportHeight()) {
-          slider.viewport.velocity({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
+          slider.viewport.velocity('stop').velocity({height: getViewportHeight()}, slider.settings.adaptiveHeightSpeed);
         }
         // if carousel and not infinite loop
         if (!slider.settings.infiniteLoop && slider.carousel && slider.active.last) {
