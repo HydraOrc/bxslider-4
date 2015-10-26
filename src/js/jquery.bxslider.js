@@ -1337,7 +1337,10 @@
       slider.active.index = setSlideIndex(slideIndex);
 
       // if plugin is currently in motion, ignore request
-      if (slider.working || slider.active.index === slider.oldIndex) { return; }
+      if (slider.working || slider.active.index === slider.oldIndex) {
+        slider.active.index = setSlideIndex(slider.oldIndex);
+        return;
+      }
       // declare that plugin is in motion
       slider.working = true;
 

@@ -1,11 +1,3 @@
-/**
- * bxSlider v4.2.5_1
- * Copyright 2013-2015 Steven Wanderski
- * Written while drinking Belgian ales and listening to jazz
-
- * Licensed under MIT (http://opensource.org/licenses/MIT)
- */
-
 ;(function($) {
 
   var defaults = {
@@ -1345,7 +1337,10 @@
       slider.active.index = setSlideIndex(slideIndex);
 
       // if plugin is currently in motion, ignore request
-      if (slider.working || slider.active.index === slider.oldIndex) { return; }
+      if (slider.working || slider.active.index === slider.oldIndex) {
+        slider.active.index = setSlideIndex(slider.oldIndex);
+        return;
+      }
       // declare that plugin is in motion
       slider.working = true;
 
